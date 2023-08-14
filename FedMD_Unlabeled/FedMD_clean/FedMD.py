@@ -9,6 +9,7 @@ from Neural_Networks import remove_last_layer
 # Hi from Server to github
 # Hi from github to server
 # hi from erfun
+# hi from erfun in branch
 # Hi from Pouya Branch
 class FedMD():
     def __init__(self, parties, public_dataset, 
