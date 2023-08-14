@@ -8,6 +8,7 @@ from Neural_Networks import remove_last_layer
 # Let's go to github
 # Hi from Server to github
 # Hi from github to server
+# hi from erfun
 class FedMD():
     def __init__(self, parties, public_dataset, 
                  private_data, total_private_data,  
