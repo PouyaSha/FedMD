@@ -111,6 +111,29 @@ if __name__ == "__main__":
                                         early_stopping = is_early_stopping,
                                         **pre_train_params
                                        )
+        
+        #Attacker
+        attackers = []
+
+        attack_model_name = "3_layer_CNN"
+        attacker_saved_names = ["Attacker Model"]
+        attack_model_params = {"n1": 128, "n2": 128, "n3": 128, "dropout_rate": 0.3}
+        attack_model = CANDIDATE_MODELS[attack_model_name](n_classes=n_classes,
+                                                        input_shape=(28,28),
+                                                            **attack_model_params)
+        print("model {0} : {1}".format(10, attacker_saved_names[0]))
+        print(attack_model.summary())
+        attackers.append(attack_model)
+
+        attaker_pre_train_result = train_models(attackers, 
+                                                X_train_MNIST, y_train_MNIST, 
+                                                X_test_MNIST, y_test_MNIST,
+                                                save_dir = None , save_names = attacker_saved_names,
+                                                early_stopping = is_early_stopping,
+                                                **pre_train_params
+                                                )
+
+    
     else:
         dpath = os.path.abspath(model_saved_dir)
         model_names = os.listdir(dpath)
