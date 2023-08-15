@@ -3,6 +3,7 @@ from tensorflow.keras.models import clone_model, load_model
 from tensorflow.keras.callbacks import EarlyStopping
 import tensorflow as tf
 
+from attacker import attacker_logit_update
 from data_utils import generate_alignment_data
 from Neural_Networks import remove_last_layer
 
@@ -108,6 +109,10 @@ class FedMD():
                 logits += d["model_logits"].predict(alignment_data["X"], verbose = 0)
                 
             logits /= self.N_parties
+            
+            attacker_logit_update(logits, attacker, self.logits_matching_batchsize, self.N_logits_matching_round, alignment_data["X"], self.private_test_data)
+
+
             
             # test performance
             print("test performance ... ")
