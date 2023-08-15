@@ -8,7 +8,7 @@ from data_utils import generate_alignment_data
 from Neural_Networks import remove_last_layer
 
 class FedMD():
-    def __init__(self, parties, public_dataset, 
+    def __init__(self, parties, attacker,  public_dataset, 
                  private_data, total_private_data,  
                  private_test_data, N_alignment,
                  N_rounds, 
@@ -16,6 +16,7 @@ class FedMD():
                  N_private_training_round, private_training_batchsize):
         
         self.N_parties = len(parties)
+        self.attacker = attacker
         self.public_dataset = public_dataset
         self.private_data = private_data
         self.private_test_data = private_test_data
@@ -67,7 +68,7 @@ class FedMD():
         #END FOR LOOP
         
         print("calculate the theoretical upper bounds for participants: ")
-        
+        """
         self.upper_bounds = []
         self.pooled_train_result = []
         for model in parties:
@@ -88,7 +89,7 @@ class FedMD():
             
             del model_ub    
         print("the upper bounds are:", self.upper_bounds)
-    
+    """
     def collaborative_training(self):
         # start collaborating training    
         collaboration_performance = {i: [] for i in range(self.N_parties)}
@@ -110,7 +111,7 @@ class FedMD():
                 
             logits /= self.N_parties
             
-            attacker_logit_update(logits, attacker, self.logits_matching_batchsize, self.N_logits_matching_round, alignment_data["X"], self.private_test_data)
+            attacker_logit_update(logits, self.attacker, self.logits_matching_batchsize, self.N_logits_matching_round, alignment_data["X"], self.private_test_data)
 
 
             

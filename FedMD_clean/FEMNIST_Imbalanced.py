@@ -146,7 +146,7 @@ if __name__ == "__main__":
     X_train_EMNIST, y_train_EMNIST, X_test_EMNIST, y_test_EMNIST, writer_ids_train_EMNIST, writer_ids_test_EMNIST
     
     
-    fedmd = FedMD(parties, 
+    fedmd = FedMD(parties,attackers[0], 
                   public_dataset = public_dataset,
                   private_data = private_data, 
                   total_private_data = total_private_data,
@@ -159,7 +159,7 @@ if __name__ == "__main__":
                   private_training_batchsize = private_training_batchsize)
     
     initialization_result = fedmd.init_result
-    pooled_train_result = fedmd.pooled_train_result
+    #pooled_train_result = fedmd.pooled_train_result
     
     collaboration_performance = fedmd.collaborative_training()
     
@@ -177,8 +177,8 @@ if __name__ == "__main__":
         pickle.dump(pre_train_result, f, protocol=pickle.HIGHEST_PROTOCOL)
     with open(os.path.join(save_dir_path, 'init_result.pkl'), 'wb') as f:
         pickle.dump(initialization_result, f, protocol=pickle.HIGHEST_PROTOCOL)
-    with open(os.path.join(save_dir_path, 'pooled_train_result.pkl'), 'wb') as f:
-        pickle.dump(pooled_train_result, f, protocol=pickle.HIGHEST_PROTOCOL)
+    # with open(os.path.join(save_dir_path, 'pooled_train_result.pkl'), 'wb') as f:
+    #     pickle.dump(pooled_train_result, f, protocol=pickle.HIGHEST_PROTOCOL)
     with open(os.path.join(save_dir_path, 'col_performance.pkl'), 'wb') as f:
         pickle.dump(collaboration_performance, f, protocol=pickle.HIGHEST_PROTOCOL)
         
