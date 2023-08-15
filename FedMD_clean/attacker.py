@@ -7,7 +7,7 @@ from data_utils import generate_alignment_data
 from Neural_Networks import remove_last_layer
 
 
-def attacker_logit_update(averaged_logit, model, logits_matching_batchsize, N_logits_matching_round, alignment_data, private_test_data)
+def attacker_logit_update(averaged_logit, model, logits_matching_batchsize, N_logits_matching_round, alignment_data, private_test_data):
 
     
     model_A_twin = None
@@ -27,7 +27,7 @@ def attacker_logit_update(averaged_logit, model, logits_matching_batchsize, N_lo
     print("attacker test performance ... ")
             
     y_pred = d["model_classifier"].predict(private_test_data["X"], verbose = 0).argmax(axis = 1)            
-    print(np.mean(self.private_test_data["y"] == y_pred))
+    print(np.mean(private_test_data["y"] == y_pred))
     del y_pred
 
     print("updates attacker model ...")
@@ -39,5 +39,5 @@ def attacker_logit_update(averaged_logit, model, logits_matching_batchsize, N_lo
                                       epochs = N_logits_matching_round, 
                                       shuffle=True, verbose = 0)
     d["model_weights"] = d["model_logits"].get_weights()
-
+    model.set_weights(d["model_weights"])
     return None

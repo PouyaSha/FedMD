@@ -42,7 +42,7 @@ def cnn_3layer_fc_model(n_classes,n1 = 128, n2=192, n3=256, dropout_rate = 0.2,i
 
     model_A = Model(inputs = x, outputs = y)
 
-    model_A.compile(optimizer=tf.keras.optimizers.Adam(lr = 1e-3), 
+    model_A.compile(optimizer=tf.keras.optimizers.Adam(learning_rate = 1e-3), 
                         loss = "sparse_categorical_crossentropy",
                         metrics = ["accuracy"])
     return model_A
@@ -78,7 +78,7 @@ def cnn_2layer_fc_model(n_classes,n1 = 128, n2=256, dropout_rate = 0.2,input_sha
 
     model_A = Model(inputs = x, outputs = y)
 
-    model_A.compile(optimizer=tf.keras.optimizers.Adam(lr = 1e-3), 
+    model_A.compile(optimizer=tf.keras.optimizers.Adam(learning_rate = 1e-3), 
                         loss = "sparse_categorical_crossentropy",
                         metrics = ["accuracy"])
     return model_A
@@ -93,7 +93,7 @@ def remove_last_layer(model, loss = "mean_absolute_error"):
     
     new_model = Model(inputs = model.inputs, outputs = model.layers[-2].output)
     new_model.set_weights(model.get_weights())
-    new_model.compile(optimizer=tf.keras.optimizers.Adam(lr = 1e-3), 
+    new_model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate = 1e-3), 
                       loss = loss)
     
     return new_model
