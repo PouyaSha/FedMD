@@ -179,6 +179,8 @@ if __name__ == "__main__":
         pickle.dump(initialization_result, f, protocol=pickle.HIGHEST_PROTOCOL)
     # with open(os.path.join(save_dir_path, 'pooled_train_result.pkl'), 'wb') as f:
     #     pickle.dump(pooled_train_result, f, protocol=pickle.HIGHEST_PROTOCOL)
+    with open(os.path.join(save_dir_path, 'attacker.pkl'), 'wb') as f:
+        pickle.dump(attack_model, f, protocol=pickle.HIGHEST_PROTOCOL)
     with open(os.path.join(save_dir_path, 'col_performance.pkl'), 'wb') as f:
         pickle.dump(collaboration_performance, f, protocol=pickle.HIGHEST_PROTOCOL)
         
