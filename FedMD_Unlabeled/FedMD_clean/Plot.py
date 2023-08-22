@@ -49,19 +49,21 @@ for i in range(21):
 
   epochs.append(i+1)
 
+#print(np.array(data).shape)
 
 
-
+dat  = []
 
 for erf in range(10):
+  dat.append(np.array(data[erf]))
+  #ax.plot(epochs,np.array(data[erf]).mean(axis = 0), '-o', label="model {0} ".format(erf))
 
- ax.plot(epochs,np.array(data[erf]), '-o', label="model {0} ".format(erf))
-
+ax.plot(epochs,(np.array(dat)).mean(axis = 0), '-o', label="Average Accuracy")
 ax.legend(loc='lower right')
 
 
 
-plt.savefig("Collaboration_Performance.png")
+plt.savefig("Collaboration_Performance1.png")
 
 
 

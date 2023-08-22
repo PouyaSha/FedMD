@@ -132,7 +132,7 @@ print(np.array(im).shape)
 im = img[np.newaxis , ...]
 print(im.shape)
 print(img.shape)
-ax1.bar(e,d["model_classifier"].predict(im))
+ax1.bar(e,d["model_classifier"].predict(im)[0])
 
 
 
