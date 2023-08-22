@@ -122,7 +122,7 @@ ax1.set_ylabel( 'lables' )
 
 img = (np.random.standard_normal([28, 28]) * 255 )
 
-ax1.bar(e,d["model_classifier"].predict(private_test_data["X"])[n])
+#ax1.bar(e,d["model_classifier"].predict(private_test_data["X"])[n])
 """
 im = []
 im.append(img)
@@ -132,9 +132,9 @@ print(np.array(im).shape)
 im = img[np.newaxis , ...]
 print(im.shape)
 print(img.shape)
-ax1.bar(e,d["model_classifier"].predict(im))
+ax1.bar(e,d["model_classifier"].predict(im)[0])
 
-
+print(d["model_classifier"].predict(im)[0])
 
 ax2 = plt.subplot( 2,1,2 )
 
@@ -148,7 +148,7 @@ ax2.set_ylabel( 'logits' )
 
 
 
-ax2.bar(e,-d["model_logits"].predict(private_test_data["X"])[n])
+ax2.bar(e,-d["model_logits"].predict(im)[0])
 
 
 
